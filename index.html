@@ -4,131 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicios Arrow Functions</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="exercicios.js" defer></script>
-    <style>
-        body{
-            background-color: #6e6262;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #principal{
-            position:relative;
-            border:solid;
-            width:80%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            padding:2%;
-            align-items: center;
-            justify-content: center;
-        }
-        #exe{
-            position:relative;
-            width:60%;
-            height:200px;
-            padding:2%;
-            border-radius:20px;
-            background-color: #52a19d;
-            box-shadow: 5px 5px 20px rgb(0,0,0);
-            transition: 1s;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            font-size: 25px;
-            color:#fff;
-            display:flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #exe:hover{
-            transform:scale(1.1);
-        }
-        #popup-overlay{
-            display:flex;
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index:1000;
-            justify-content: center;
-            align-items: center;
-            opacity:0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        #popup-overlay.show{
-            opacity:1;
-            visibility:visible;
-        }
-        #popup-content{
-            background-color: #fff;
-            padding:20px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-        }
-        #close-btn{
-            margin-top: 10px;
-            padding:10px 20px;
-            background-color: #007bff;
-            color:white;
-            border:none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #close-btn:hover{
-            background-color: #0056b3;
-        }
-        #btn1{
-            padding:10px;
-            background-color: #28a51d;
-            color:white;
-            border:none;
-            border-radius: 5px;
-            cursor: pointer;
-            width:80px;
-            text-align: center;
-        }
-        #btn1:hover{
-            background-color: #247011;
-        }
-        #n1
-        {
-            border-radius: 20px;
-            height: 30px;
-            border: none;
-            background-color: #bdb8b8;
-            text-align: center;
-        }
-        #n2
-        {
-            border-radius: 20px;
-            height: 30px;
-            border: none;
-            background-color: #bdb8b8;
-            text-align: center;
-        }
-        #conteudo
-        {
-            display: flex;
-            flex-direction: column;
-            gap:20px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-
-        }
-    </style>
 </head>
 <body>
     <header>
         <h1>Exercicios</h1>
     </header>
     <div id="principal">
-        <div id="exe">
+        <div class="exe" id="e1">
             <h3>Operações</h3>
+        </div>
+        <div class="exe" id="e2">
+            <h3>Notas Escolares</h3>
+        </div>
+        <div class="exe" id="e3">
+            <h3>Fibonacci</h3>
         </div>
     </div>
     <div id="popup-overlay">
@@ -138,18 +29,30 @@
         </div>
     </div>
     <script>
-        const clickableDiv = document.querySelector('#exe');
+        const exe1 = document.querySelector('#e1');
+        const exe2 = document.querySelector('#e2');
+        const exe3 = document.querySelector('#e3');
         const popup = document.getElementById('popup-overlay');
         const closeBtn = document.getElementById('close-btn');
         const exercicio = document.getElementById('conteudo');
 
 
         //mostrar o popup ao clicar na div 
-        clickableDiv.addEventListener('click', () => {
+        exe1.addEventListener('click', () => {
             popup.classList.add('show');
             exercicio.innerHTML = operacoes;
-            addButtonEvent();
+            addButtonOp();
         });
+        exe2.addEventListener('click', ()=> {
+            popup.classList.add('show');
+            exercicio.innerHTML = notas;
+            addButtonMed();
+        });
+        exe3.addEventListener('click', () =>{
+            popup.classList.add('show');
+            exercicio.innerHTML = fibonacci;
+            addButtonFibo();
+        })
 
         //Fechar
         closeBtn.addEventListener('click', () => {
