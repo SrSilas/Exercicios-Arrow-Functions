@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operções</title>
+</head>
+<body>
+    <input type="number" name="num1" id="n1">
+    <input type="number" name="num2" id="n2">
+    <input type="button" value="Calcular" id="btn1">
+
+    <script>
+        const calcular = () => {
+            
+            let numb1 = Number(document.getElementById('n1').value);
+            let numb2 = Number(document.getElementById('n2').value);
+            if(isNaN(numb1) || isNaN(numb2))
+            {
+                alert('Por favor, insira dois numeros!');
+                return;
+            }   
+            alert(`Soma: ${numb1 + numb2}\nSubtração: ${numb1 - numb2}\nMultiplicação: ${numb1 * numb2}\nDivisão: ${numb1 / numb2}\n`);
+        }
+        let btn = document.getElementById('btn1');
+        btn.addEventListener('mouseenter',entrou);
+        btn.addEventListener('mouseout',saiu);
+        btn.addEventListener('click', calcular);    
+        function entrou(){
+            btn.style.background = 'blue';
+        }
+        function saiu(){
+            btn.style.background = 'green';
+        }
+        </script>
+</body>
+</html>
