@@ -157,3 +157,42 @@ const estacionamento = `
             });
         }
     }
+const conversor = `
+    <h3>Converter Real para Dólar</h3>
+    <input type="number" class="inputs" id="Real" placeholder="Valor em reais">
+    <input type="button" value="Converter" id="btnConv" class="btnOK">
+`;
+    function addButtonConverte(){
+        const btn = document.getElementById('btnConv');
+        if(btn)
+        {
+            btn.addEventListener('click', () => {
+                let real = Number(document.getElementById('Real').value);
+                if(!real || real <= 0)
+                {
+                    alert("Por favor, insira um valor válido em reais.");
+                    return;
+                }
+                async function pegarValorDolar(){
+                    try {
+                            const response = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+                            const data = await response.json();
+
+                            const valorDolar = parseFloat(data.USDBRL.bid); //pega o valor atual do dolar
+                            let valorDolarFormatado = valorDolar.toFixed(2); //limita a duas casa decimais após a virgula
+                            console.log(`Valor atual do dólar: R$ ${valorDolarFormatado}`);
+                            let valorFinal = (real / valorDolar).toFixed(2);
+                            alert(`Valor atual do Dólar: ${valorDolarFormatado}\n` + 
+                                    `Valor em reais ${valorFinal}`
+                            );
+                    }
+                    catch (error)
+                    {
+                        console.log("Não foi possivel buscar o valor do Dólar:", error);
+                        alert("Não foi possivel buscar o valor do Dólar, tente novamente mais tarde!");
+                    }
+                }
+                return pegarValorDolar();
+            });
+        }
+    }

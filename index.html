@@ -28,7 +28,7 @@
             <h3>Calcular Estacionamento</h3>
         </div>
         <div class="exe" id="e6">
-            <h3>Em andamento</h3>
+            <h3>Converter <br>Real para Dólar</h3>
         </div>
     </div>
     <div id="popup-overlay">
@@ -43,6 +43,7 @@
         const exe3 = document.querySelector('#e3');
         const exe4 = document.querySelector('#e4');
         const exe5 = document.querySelector('#e5');
+        const exe6 = document.querySelector('#e6');
         const popup = document.getElementById('popup-overlay');
         const closeBtn = document.getElementById('close-btn');
         const exercicio = document.getElementById('conteudo');
@@ -73,6 +74,11 @@
             popup.classList.add('show');
             exercicio.innerHTML = estacionamento;
             addButtonEst();
+        });
+        exe6.addEventListener('click',() => {
+            popup.classList.add('show');
+            exercicio.innerHTML = conversor;
+            addButtonConverte();
         });
 
         //Fechar
