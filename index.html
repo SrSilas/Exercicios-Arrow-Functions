@@ -21,6 +21,15 @@
         <div class="exe" id="e3">
             <h3>Fibonacci</h3>
         </div>
+        <div class="exe" id="e4">
+            <h3>Par ou Impar</h3>
+        </div>
+        <div class="exe" id="e5">
+            <h3>Calcular Estacionamento</h3>
+        </div>
+        <div class="exe" id="e6">
+            <h3>Em andamento</h3>
+        </div>
     </div>
     <div id="popup-overlay">
         <div id="popup-content">
@@ -32,6 +41,8 @@
         const exe1 = document.querySelector('#e1');
         const exe2 = document.querySelector('#e2');
         const exe3 = document.querySelector('#e3');
+        const exe4 = document.querySelector('#e4');
+        const exe5 = document.querySelector('#e5');
         const popup = document.getElementById('popup-overlay');
         const closeBtn = document.getElementById('close-btn');
         const exercicio = document.getElementById('conteudo');
@@ -52,7 +63,17 @@
             popup.classList.add('show');
             exercicio.innerHTML = fibonacci;
             addButtonFibo();
-        })
+        });
+        exe4.addEventListener('click', () =>{
+            popup.classList.add('show');
+            exercicio.innerHTML = parImpar;
+            addButtonPar();
+        });
+        exe5.addEventListener('click',() =>{
+            popup.classList.add('show');
+            exercicio.innerHTML = estacionamento;
+            addButtonEst();
+        });
 
         //Fechar
         closeBtn.addEventListener('click', () => {

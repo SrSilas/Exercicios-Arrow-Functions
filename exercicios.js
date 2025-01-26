@@ -107,3 +107,53 @@ const notas = `
                 });
             }
         }
+const parImpar = `
+    <h3>Par ou impar</h3>
+    <input type="number" class="inputs" id="nPar" placeholder="Digite um numero">
+    <input type="button" value="Checar" id="btnPar" class="btnOK">
+    `;
+    function addButtonPar(){
+        const btn = document.getElementById('btnPar');
+        if(btn){
+            btn.addEventListener('click', ()=> {
+                let num = Number(document.getElementById('nPar').value);
+                if(isNaN(num))
+                {
+                    alert('Por Favor, preencha com um numero!');
+                    return;
+                }
+                if(num % 2 === 0)
+                {
+                    alert('O número é par!');
+                }
+                else{
+                    alert('O número é impar!');
+                }
+            })
+        }
+    } 
+const estacionamento = `
+    <h3>Calcular preço do Estacionamento</h3>
+    <input type="time" class="inputs" id="hEntrada" placeholder="Horário de entrada">
+    <input type="time" class="inputs" id="hSaida" placeholder="Horário de Saída">
+    <input type="button" value="Calcular" id="btnPreco" class="btnOK">
+    `;
+    function addButtonEst(){
+        const btn = document.getElementById('btnPreco');
+        if(btn){
+            btn.addEventListener('click', () =>{
+                let horaEntrada = document.getElementById('hEntrada').value;
+                let horaSaida = document.getElementById('hSaida').value;
+                if(horaEntrada === "" || horaSaida === "")
+                {
+                    alert('Por Favor, preencha o horário de entrada e de saída!');
+                    return;
+                }
+                let [he,me] = horaEntrada.split(":");
+                let [hs,ms] = horaSaida.split(":");
+                let resp = (((hs-he)*4) + ((ms - me) * 0.06667));
+                let preco = resp.toFixed(2);
+                alert(`Valor a pagar: ${preco}`);
+            });
+        }
+    }
